@@ -1,0 +1,2 @@
+json.extract! photographer, :id, :name, :phone, :city, :state, :country, :email, :password, :string, :avatar, :portfolio_link, :bio, :display_name, :created_at, :updated_at
+json.url photographer_url(photographer, format: :json)
