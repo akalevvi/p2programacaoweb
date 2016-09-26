@@ -1,0 +1,2 @@
+class PriceQuote < ApplicationRecord
+end

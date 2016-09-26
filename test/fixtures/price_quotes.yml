@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  total: 1.5
+  status: MyString
+  client_id: 1
+  photographer_id: 1
+
+two:
+  description: MyString
+  total: 1.5
+  status: MyString
+  client_id: 1
+  photographer_id: 1
