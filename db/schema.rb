@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160926140910) do
+ActiveRecord::Schema.define(version: 20160926143128) do
+
+  create_table "client_reviews", force: :cascade do |t|
+    t.string   "comment"
+    t.integer  "rating"
+    t.integer  "client_id"
+    t.integer  "photographer_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "clients", force: :cascade do |t|
     t.string   "name"
@@ -24,6 +33,15 @@ ActiveRecord::Schema.define(version: 20160926140910) do
     t.string   "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "photographer_reviews", force: :cascade do |t|
+    t.string   "comment"
+    t.integer  "rating"
+    t.integer  "client_id"
+    t.integer  "photographer_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "photographers", force: :cascade do |t|
@@ -41,6 +59,16 @@ ActiveRecord::Schema.define(version: 20160926140910) do
     t.string   "display_name"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "price_quotes", force: :cascade do |t|
+    t.string   "description"
+    t.float    "total"
+    t.string   "status"
+    t.integer  "client_id"
+    t.integer  "photographer_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end
