@@ -7,8 +7,6 @@ class CreatePhotographers < ActiveRecord::Migration[5.0]
       t.string :state
       t.string :country
       t.string :email
-      t.string :password
-      t.string :string
       t.string :avatar
       t.string :portfolio_link
       t.string :bio

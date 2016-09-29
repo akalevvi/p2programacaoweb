@@ -25,11 +25,12 @@ class PhotographersController < ApplicationController
   # POST /photographers.json
   def create
     @photographer = Photographer.new(photographer_params)
+    @user = User.new(email: photographer_params['email'], password: photographer_params['password'])
 
     respond_to do |format|
-      if @photographer.save
-        format.html { redirect_to @photographer, notice: 'Photographer was successfully created.' }
-        format.json { render :show, status: :created, location: @photographer }
+      if @photographer.save && @user.save
+        sign_in @user
+        redirect_back_or url_after_create
       else
         format.html { render :new }
         format.json { render json: @photographer.errors, status: :unprocessable_entity }

@@ -25,11 +25,13 @@ class ClientsController < ApplicationController
   # POST /clients.json
   def create
     @client = Client.new(client_params)
+    @user = User.new(email: client_params['email'], password: client_params['password'])
+
 
     respond_to do |format|
-      if @client.save
-        format.html { redirect_to @client, notice: 'Client was successfully created.' }
-        format.json { render :show, status: :created, location: @client }
+      if @client.save && @user.save
+        sign_in @user
+        redirect_back_or url_after_create
       else
         format.html { render :new }
         format.json { render json: @client.errors, status: :unprocessable_entity }
