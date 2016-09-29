@@ -30,7 +30,7 @@ class PhotographersController < ApplicationController
     respond_to do |format|
       if @photographer.save && @user.save
         sign_in @user
-        redirect_back_or url_after_create
+        format.html {redirect_to Clearance.configuration.redirect_url}
       else
         format.html { render :new }
         format.json { render json: @photographer.errors, status: :unprocessable_entity }
@@ -43,7 +43,7 @@ class PhotographersController < ApplicationController
   def update
     respond_to do |format|
       if @photographer.update(photographer_params)
-        format.html { redirect_to @photographer, notice: 'Photographer was successfully updated.' }
+        format.html { redirect_to @photographer, notice: 'Sua conta foi atualizada com sucesso!' }
         format.json { render :show, status: :ok, location: @photographer }
       else
         format.html { render :edit }

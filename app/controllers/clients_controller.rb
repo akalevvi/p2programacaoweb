@@ -4,7 +4,7 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.all
+    @photographers = Photographer.all
   end
 
   # GET /clients/1
@@ -31,7 +31,7 @@ class ClientsController < ApplicationController
     respond_to do |format|
       if @client.save && @user.save
         sign_in @user
-        redirect_back_or url_after_create
+        format.html {redirect_to Clearance.configuration.redirect_url}
       else
         format.html { render :new }
         format.json { render json: @client.errors, status: :unprocessable_entity }
