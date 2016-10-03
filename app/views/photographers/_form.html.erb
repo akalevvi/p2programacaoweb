@@ -22,6 +22,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :birthdate %>
+    <%= f.text_field :birthdate, class: 'datepicker' %>
+  </div>
+
+  <div class="field">
     <%= f.label :city %>
     <%= f.text_field :city %>
   </div>
@@ -71,4 +76,10 @@
   <div class="actions">
     <%= f.submit :criar%>
   </div>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.datepicker').datepicker({format: 'dd-mm-yyyy'});
+    });
+  </script>
 <% end %>

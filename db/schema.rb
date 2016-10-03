@@ -28,8 +28,7 @@ ActiveRecord::Schema.define(version: 20160927025846) do
     t.string   "state"
     t.string   "country"
     t.string   "email"
-    t.string   "password"
-    t.string   "string"
+    t.string   "birthdate"
     t.string   "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -51,8 +50,7 @@ ActiveRecord::Schema.define(version: 20160927025846) do
     t.string   "state"
     t.string   "country"
     t.string   "email"
-    t.string   "password"
-    t.string   "string"
+    t.date     "birthdate"
     t.string   "avatar"
     t.string   "portfolio_link"
     t.string   "bio"

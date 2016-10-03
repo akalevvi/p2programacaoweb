@@ -31,7 +31,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if signed_in? %>
-            <li><%= current_user.name %>
+            <li><%= current_user.email %>
             - <%= current_user.tipo %></li>
             <li><a href=<%= sign_out_path %>> <span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
           <% else %>
