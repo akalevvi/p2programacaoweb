@@ -1,5 +1,6 @@
 class PhotographersController < ApplicationController
   before_action :set_photographer, only: [:show, :edit, :update, :destroy]
+  require 'carrierwave/orm/activerecord'
 
   # GET /photographers
   # GET /photographers.json

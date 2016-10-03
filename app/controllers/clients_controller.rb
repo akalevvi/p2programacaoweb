@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
+  require 'carrierwave/orm/activerecord'
 
   # GET /clients
   # GET /clients.json
