@@ -1,5 +1,6 @@
 class PhotographersController < ApplicationController
   before_action :set_photographer, only: [:show, :edit, :update, :destroy]
+  require 'carrierwave/orm/activerecord'
 
   # GET /photographers
   # GET /photographers.json
@@ -25,11 +26,12 @@ class PhotographersController < ApplicationController
   # POST /photographers.json
   def create
     @photographer = Photographer.new(photographer_params)
+    @user = User.new(email: photographer_params['email'], password: photographer_params['password'])
 
     respond_to do |format|
-      if @photographer.save
-        format.html { redirect_to @photographer, notice: 'Photographer was successfully created.' }
-        format.json { render :show, status: :created, location: @photographer }
+      if @photographer.save && @user.save
+        sign_in @user
+        format.html {redirect_to Clearance.configuration.redirect_url}
       else
         format.html { render :new }
         format.json { render json: @photographer.errors, status: :unprocessable_entity }
@@ -42,7 +44,7 @@ class PhotographersController < ApplicationController
   def update
     respond_to do |format|
       if @photographer.update(photographer_params)
-        format.html { redirect_to @photographer, notice: 'Photographer was successfully updated.' }
+        format.html { redirect_to @photographer, notice: 'Sua conta foi atualizada com sucesso!' }
         format.json { render :show, status: :ok, location: @photographer }
       else
         format.html { render :edit }

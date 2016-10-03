@@ -9,6 +9,44 @@
   </head>
 
   <body>
+    <header>
+      <div id="flash">
+        <% flash.each do |key, value| %>
+          <div class="flash <%= key %>"><%= value %></div>
+        <% end %>
+      </div>
+    </header>
+
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">PhotoHub</a>
+        </div>
+        <% if signed_in? %>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <% if current_user.tipo == "Fotógrafo" %>
+          <li><a href="#">Price Quotes</a></li>
+          <li><a href="#">Meus Reviews</a></li>
+          <% else %>
+          <li><a href=<%= photographers_path %>>Fotógrafos</a></li>
+          <li><a href="#">Meus Reviews</a></li>
+          <% end %>
+        <% end %>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <% if signed_in? %>
+            <li><%= current_user.email %>
+            - <%= current_user.tipo %></li>
+            <li><%= link_to "Logout", sign_out_path, method: :delete %></li>
+          <% else %>
+            <li><a href=<%= sign_up_path %>> <span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href=<%= sign_in_path %>> <span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+
     <%= yield %>
   </body>
 </html>

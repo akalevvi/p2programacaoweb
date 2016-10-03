@@ -31,19 +31,9 @@
 </p>
 
 <p>
-  <strong>Password:</strong>
-  <%= @client.password %>
-</p>
-
-<p>
-  <strong>String:</strong>
-  <%= @client.string %>
-</p>
-
-<p>
   <strong>Avatar:</strong>
   <%= @client.avatar %>
 </p>
 
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+<%= link_to 'Editar', edit_client_path(@client) %> |
+<%= link_to 'Voltar', home_path %>

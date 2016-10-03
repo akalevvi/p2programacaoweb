@@ -1,10 +1,11 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
+  require 'carrierwave/orm/activerecord'
 
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.all
+    @photographers = Photographer.all
   end
 
   # GET /clients/1
@@ -25,11 +26,13 @@ class ClientsController < ApplicationController
   # POST /clients.json
   def create
     @client = Client.new(client_params)
+    @user = User.new(email: client_params['email'], password: client_params['password'])
+
 
     respond_to do |format|
-      if @client.save
-        format.html { redirect_to @client, notice: 'Client was successfully created.' }
-        format.json { render :show, status: :created, location: @client }
+      if @client.save && @user.save
+        sign_in @user
+        format.html {redirect_to Clearance.configuration.redirect_url}
       else
         format.html { render :new }
         format.json { render json: @client.errors, status: :unprocessable_entity }
