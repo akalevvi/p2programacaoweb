@@ -7,7 +7,8 @@ class CreateClients < ActiveRecord::Migration[5.0]
       t.string :state
       t.string :country
       t.string :email
-      t.string :birthdate
+      t.string :password
+      t.date :birthdate
       t.string :avatar
 
       t.timestamps

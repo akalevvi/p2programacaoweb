@@ -25,15 +25,20 @@
         <% if signed_in? %>
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">Page 1</a></li>
-          <li><a href="#">Page 2</a></li>
+          <% if current_user.tipo == "Fotógrafo" %>
+          <li><a href="#">Price Quotes</a></li>
+          <li><a href="#">Meus Reviews</a></li>
+          <% else %>
+          <li><a href=<%= photographers_path %>>Fotógrafos</a></li>
+          <li><a href="#">Meus Reviews</a></li>
+          <% end %>
         <% end %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if signed_in? %>
             <li><%= current_user.email %>
             - <%= current_user.tipo %></li>
-            <li><a href=<%= sign_out_path %>> <span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            <li><%= link_to "Logout", sign_out_path, method: :delete %></li>
           <% else %>
             <li><a href=<%= sign_up_path %>> <span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
             <li><a href=<%= sign_in_path %>> <span class="glyphicon glyphicon-log-in"></span> Login</a></li>
