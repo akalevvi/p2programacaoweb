@@ -1,3 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<p>Orçamentos serão exibidos aqui</p>
+<h1>Fotógrafos</h1>
+<table class="table">
+  <tbody>
+    <% @photographers.each do |photographer| %>
+      <tr>
+        <td><img src=<%= "#{photographer.avatar}" %> width=220px height=200px > </img></td>
+        <td><%= photographer.display_name %></td>
+        <td><%= photographer.city %>,
+            <%= photographer.state %> -
+            <%= photographer.country %> </td>
+        <td><%= photographer.portfolio_link %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
