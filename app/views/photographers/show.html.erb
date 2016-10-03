@@ -1,64 +1,44 @@
-<p id="notice"><%= notice %></p>
+<section>
+  <article>
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @photographer.name %>
-</p>
+    <img src=<%= "#{@photographer.avatar}"%> width=150px height=100px > </img>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @photographer.phone %>
-</p>
+    <h1><%= @photographer.display_name %></h1>
 
-<p>
-  <strong>City:</strong>
-  <%= @photographer.city %>
-</p>
+    <p><%= @photographer.bio %></p>
 
-<p>
-  <strong>State:</strong>
-  <%= @photographer.state %>
-</p>
+    <p>Portfolio: <%= @photographer.portfolio_link %></p>
 
-<p>
-  <strong>Country:</strong>
-  <%= @photographer.country %>
-</p>
+    <p><strong><%= @photographer.phone %> - <%= @photographer.email %> </strong></p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @photographer.email %>
-</p>
+    <p><%= @photographer.city %>, <%= @photographer.state %> - <%= @photographer.country %></p>
+  </article>
+  <aside>
 
-<p>
-  <strong>Password:</strong>
-  <%= @photographer.password %>
-</p>
+  </aside>
+</section>
 
-<p>
-  <strong>String:</strong>
-  <%= @photographer.string %>
-</p>
-
-<p>
-  <strong>Avatar:</strong>
-  <%= @photographer.avatar %>
-</p>
-
-<p>
-  <strong>Portfolio link:</strong>
-  <%= @photographer.portfolio_link %>
-</p>
-
-<p>
-  <strong>Bio:</strong>
-  <%= @photographer.bio %>
-</p>
-
-<p>
-  <strong>Display name:</strong>
-  <%= @photographer.display_name %>
-</p>
-
-<%= link_to 'Edit', edit_photographer_path(@photographer) %> |
-<%= link_to 'Back', home_path %>
+<section>
+  <% if @photographer.photographer_reviews %>
+    <p><strong>Reviews:</strong><p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nota</th>
+            <th>Comentário</th>
+            <th>Autor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @photographer.photographer_reviews.each do |review| %>
+          <tr>
+            <td><%= review.rating %></td>
+            <td><%= review.comment %></td>
+            <td><%= review.client %></td>
+          </tr>
+        </tbody>
+          <% end %>
+      </table>
+    <% end %>
+</section>
