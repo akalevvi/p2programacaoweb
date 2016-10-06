@@ -1,0 +1,5 @@
+<h1>Novo Orçamento para <%= @photographer.display_name %> </h1>
+<p>Descreva abaixo os detalhes do seu orçamento como local, duração aproximada, tipo de foto etc </p>
+<%= render 'form', price_quote: @price_quote %>
+
+<%= link_to 'Back', :back %>

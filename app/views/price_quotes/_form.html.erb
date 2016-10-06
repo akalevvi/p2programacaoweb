@@ -1,0 +1,13 @@
+<%= form_tag('/price_quotes', method: "post") do %>
+
+  <div class="field">
+    <%= label_tag :description %>
+    <%= text_area_tag :description %>
+  </div>
+
+  <%= hidden_field_tag 'photographer_id', @photographer.id %>
+  <div class="actions">
+      <%= submit_tag :enviar%>
+  </div>
+
+<% end %>

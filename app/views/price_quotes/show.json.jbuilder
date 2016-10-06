@@ -1,0 +1,1 @@
+json.partial! "price_quotes/price_quote", price_quote: @price_quote
