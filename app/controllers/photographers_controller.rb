@@ -5,13 +5,25 @@ class PhotographersController < ApplicationController
   # GET /photographers
   # GET /photographers.json
   def index
-    @photographers = Photographer.all
+    @name = params[:name]
+    @bio = params[:bio]
+    filtro = "1=1 "
+
+    if @name
+      filtro += "and display_name like '%" + @name.strip + "%' "
+    end
+
+    if @bio
+      filtro += "and bio like '%" + @bio.strip + "%'"
+    end
+
+    @photographers = Photographer.where(filtro).order("display_name")
   end
 
   # GET /photographers/1
   # GET /photographers/1.json
   def show
-    
+
   end
 
   # GET /photographers/new
@@ -66,10 +78,10 @@ class PhotographersController < ApplicationController
 
   def review
     @client = Client.find_by email: current_user.email
-    
-    review = PhotographerReview.create(comment: params[:comment], rating: params[:rating], photographer_id: params[:photographer_id], client_id: @client.id ) 
-    if review 
-      redirect_to :back 
+
+    review = PhotographerReview.create(comment: params[:comment], rating: params[:rating], photographer_id: params[:photographer_id], client_id: @client.id )
+    if review
+      redirect_to :back
     end
 
   end

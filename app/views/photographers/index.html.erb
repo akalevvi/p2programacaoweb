@@ -1,12 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Fotógrafos</h1>
+
+<%= render 'search_form' %>
 <table class="table">
+  <thead>
+    <tr>
+      <th></th
+      <th>Nome</th>
+      <th>Bio</th>
+      <th>Localidade</th>
+      <th>Portfolio</th>
+    </tr>
+  </thead>
   <tbody>
     <% @photographers.each do |photographer| %>
       <tr>
         <td><img src=<%= "#{photographer.avatar}" %> width=220px height=200px > </img></td>
         <td><%= photographer.display_name %></td>
+        <td><%= photographer.bio %></td>
         <td><%= photographer.city %>,
             <%= photographer.state %> -
             <%= photographer.country %> </td>
@@ -16,3 +28,8 @@
     <% end %>
   </tbody>
 </table>
+
+<% if @photographers.count < 1 %>
+  <p>Não foram encontrados resultados</p>
+<% end %>
+<p><%= link_to "Limpar Busca", photographers_path %>

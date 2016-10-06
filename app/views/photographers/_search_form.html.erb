@@ -1,0 +1,7 @@
+<%= form_tag(photographers_path, method: "get") do %>
+  <%= label_tag(:name, "Nome:") %>
+  <%= text_field_tag(:name, @name) %>
+  <%= label_tag(:bio, "Palavras chave (ex.: casamento, moda):") %>
+  <%= text_field_tag(:bio, @bio) %>
+  <%= submit_tag 'Buscar' %>
+<% end %>
