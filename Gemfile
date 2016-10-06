@@ -22,6 +22,7 @@ gem 'jquery-inputmask-rails'
 gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
 gem 'prawn'
 gem 'prawn-table'
+gem 'will_paginate', '~> 3.0.7'
 
 gem "clearance"
 # Use jquery as the JavaScript library
