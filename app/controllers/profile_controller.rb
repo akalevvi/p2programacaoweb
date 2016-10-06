@@ -17,5 +17,13 @@ class ProfileController < ApplicationController
       @quotes = PriceQuote.where(client_id: current_user.details.id)
       end
     end
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = QuotesReport.new(@quotes)
+        send_data pdf.render, filename: 'RelatórioOrçamentos.pdf', :width => pdf.bounds.width,
+        type: 'application/pdf', disposition: :inline, :page_size => 'A4', :page_layout => :portrait
+      end
+    end
   end
 end

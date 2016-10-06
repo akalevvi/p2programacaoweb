@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post '/my_reviews', to: 'profile#my_reviews'
   get '/my_quotes', to: 'profile#my_quotes'
 
+
   resources :photographers
   resources :clients
   resources :photographer_reviews

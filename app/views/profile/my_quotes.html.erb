@@ -1,6 +1,10 @@
 <section>
   <% if @quotes.count > 0 %>
     <p><strong>Seus orçamentos:</strong><p>
+
+      <% if current_user.tipo == "Fotógrafo" %>
+      <button type="button"><a href="/my_quotes.pdf">BAIXAR EM PDF</a></button>
+      <% end %>
       <table class="table">
         <thead>
           <tr>
