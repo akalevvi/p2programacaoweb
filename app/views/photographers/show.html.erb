@@ -19,8 +19,7 @@
   </aside>
 </section>
 
-<section id="addNewReview">
-
+<!-- Somente clientes podem deixar review na página de fotógrafos !-->
 <% if current_user.tipo == "Cliente" %>
   <section id="addNewReview">
   <h2>Deixe um review: </h2>
@@ -37,6 +36,7 @@
             <th>Nota</th>
             <th>Comentário</th>
             <th>Autor</th>
+            <th>Data</th>
           </tr>
         </thead>
         <tbody>
@@ -45,6 +45,11 @@
             <td><%= review.rating %></td>
             <td><%= review.comment %></td>
             <td><%= review.client.name %></td>
+            <td><%= review.created_at %> </td>
+            <!-- Verifica se o usuário logado é o autor desse review, se sim então ele tem acesso ao botão de apagar" !-->
+            <% if current_user.details.id == review.client.id %>
+              <td><%= link_to 'Apagar', review, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+            <% end %>
           </tr>
         </tbody>
           <% end %>
