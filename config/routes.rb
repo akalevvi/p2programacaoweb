@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   post '/photographers/review', to: 'photographers#review'
   post '/photographers/new_quote', to: 'photographers#new_quote'
   post '/photographers/review_quotes', to: 'photographers#review_quotes'
-  post '/client/review', to: 'clients#review'
+  post '/clients/review', to: 'clients#review'
 
   resources :photographers
   resources :clients

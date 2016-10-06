@@ -21,13 +21,16 @@
 
 <section id="addNewReview">
 
-<h2>Deixe um review: </h2>
-  <%= render 'shared/review_form' %>
-</section>
+<% if current_user.tipo == "Cliente" %>
+  <section id="addNewReview">
+  <h2>Deixe um review: </h2>
+    <%= render 'shared/review_form' %>
+  </section>
+<% end %>
 
 <section>
   <% if @photographer.photographer_reviews.count > 0 %>
-    <p><strong>Reviews:</strong><p>
+    <p><strong>Reviews de clientes:</strong><p>
       <table class="table">
         <thead>
           <tr>

@@ -64,6 +64,16 @@ class ClientsController < ApplicationController
     end
   end
 
+  def review
+    @photographer = Photographer.find_by email: current_user.email
+    
+    review = ClientReview.create(comment: params[:comment], rating: params[:rating], client_id: params[:client_id], photographer_id: @photographer.id ) 
+    if review 
+      redirect_to :back 
+    end
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_client
