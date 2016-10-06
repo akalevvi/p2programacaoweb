@@ -40,9 +40,9 @@
         </div>
       </nav>
 
-      <div id="flash" class="alert alert-success">
+      <div id="flash">
         <% flash.each do |key, value| %>
-          <div class="flash <%= key %>"><%= value %></div>
+          <div class="flash alert alert-success <%= key %>"><%= value %></div>
         <% end %>
       </div>
     </header>
