@@ -13,7 +13,7 @@ photographer = Photographer.new({name: 'Fernando Borges', display_name: "Fernand
 client = Client.new({name: 'Gabriel Souza', phone: '22 2129-2198', birthdate: '30-03-1990', city: 'Campos', country: 'Brasil',
   state: 'RJ', email: 'gabriel@mail.com', password: 'gabriel', avatar: 'http://localhost:3000/uploads/perfil.jpg'})
 
-photographer.photographer_reviews << PhotographerReview.new({comment: "De muita qualidade", rating: 4,client_id: client.id})
+#photographer.photographer_reviews << PhotographerReview.new({comment: "De muita qualidade", rating: 4,client_id: client.id})
 
 client.save
 photographer.save

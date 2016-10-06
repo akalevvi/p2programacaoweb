@@ -1,0 +1,19 @@
+<%= form_tag(photographers_review_path, method: "post") do %>
+
+  <div class="field">
+    <%= label_tag :rating %>
+    <%= select_tag :rating, options_for_select([1,2,3,4,5]) %>
+  </div>
+
+  <div class="field">
+    <%= label_tag :comment %>
+    <%= text_area_tag :comment %>
+  </div>
+
+  <%= hidden_field_tag 'photographer_id', @photographer.id %>
+
+  <div class="actions">
+    <%= submit_tag :enviar%>
+  </div>
+
+  <% end %>

@@ -19,6 +19,12 @@
   </aside>
 </section>
 
+<section id="addNewReview">
+
+<h2>Deixe um review: </h2>
+  <%= render 'review_form' %>
+</section>
+
 <section>
   <% if @photographer.photographer_reviews %>
     <p><strong>Reviews:</strong><p>
@@ -35,7 +41,7 @@
           <tr>
             <td><%= review.rating %></td>
             <td><%= review.comment %></td>
-            <td><%= review.client %></td>
+            <td><%= review.client.name %></td>
           </tr>
         </tbody>
           <% end %>

@@ -11,6 +11,7 @@ class PhotographersController < ApplicationController
   # GET /photographers/1
   # GET /photographers/1.json
   def show
+    
   end
 
   # GET /photographers/new
@@ -61,6 +62,16 @@ class PhotographersController < ApplicationController
       format.html { redirect_to photographers_url, notice: 'Photographer was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def review
+    @client = Client.find_by email: current_user.email
+    
+    review = PhotographerReview.create(comment: params[:comment], rating: params[:rating], photographer_id: params[:photographer_id], client_id: @client.id ) 
+    if review 
+      redirect_to :back 
+    end
+
   end
 
   private
