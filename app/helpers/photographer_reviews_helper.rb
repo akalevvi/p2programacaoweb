@@ -1,0 +1,2 @@
+module PhotographerReviewsHelper
+end
