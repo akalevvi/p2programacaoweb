@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   post '/photographers/new_quote', to: 'photographers#new_quote'
   post '/photographers/review_quotes', to: 'photographers#review_quotes'
   post '/clients/review', to: 'clients#review'
-  post '/clients/my_reviews'
   get '/price_quotes/:photographer_id/new', to: 'price_quotes#new'
+  post '/my_reviews', to: 'profile#my_reviews'
+  get '/my_quotes', to: 'profile#my_quotes'
 
   resources :photographers
   resources :clients

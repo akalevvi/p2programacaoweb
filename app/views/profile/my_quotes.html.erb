@@ -1,0 +1,42 @@
+<section>
+  <% if @quotes.count > 0 %>
+    <p><strong>Seus orçamentos:</strong><p>
+      <table class="table">
+        <thead>
+          <tr>
+            <!-- O conteúdo da tabela muda dependendo se o usuário é fotógrafo ou cliente !-->
+            <% if current_user.tipo == "Fotógrafo" %>
+              <th>Autor</th>
+            <% else %>
+              <th>Fotógrafo</th>
+            <% end %>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th>Status</th>
+            <th>Enviado em</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @quotes.each do |quote| %>
+          <tr>
+            <!-- O conteúdo da tabela muda dependendo se o usuário é fotógrafo ou cliente !-->
+            <% if current_user.tipo == "Fotógrafo" %>
+              <td><%= quote.client.name %></td>
+            <% else %>
+              <td><%= quote.photographer.display_name %></td>
+            <% end %>
+            <td><%= quote.description %></td>
+            <td><%= quote.total %></td>
+            <td><%= quote.status %></td>
+            <td><%= quote.created_at %> </td>
+            <td><%= link_to 'Apagar', quote, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+            <td><%= link_to 'Editar', quote %></td>
+
+          </tr>
+        </tbody>
+          <% end %>
+      </table>
+    <% else %>
+      <p>Você não tem nenhum orçamento</p>
+    <% end %>
+</section>

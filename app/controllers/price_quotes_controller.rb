@@ -50,10 +50,8 @@ class PriceQuotesController < ApplicationController
   # DELETE /price_quotes/1
   # DELETE /price_quotes/1.json
   def destroy
-    @price_quote.destroy
-    respond_to do |format|
-      format.html { redirect_to price_quotes_url, notice: 'Price quote was successfully destroyed.' }
-      format.json { head :no_content }
+    if @price_quote.destroy
+      redirect_to :back
     end
   end
 
