@@ -1,6 +1,9 @@
-<h1>Editing Price Quote</h1>
+<h1>Editar Orçamento</h1>
 
-<%= render 'form', price_quote: @price_quote %>
+<% if current_user.tipo == "Fotógrafo" %>
+  <%= render 'edit_photographer_form', price_quote: @price_quote %>
+<% else %>
+  <%= render 'edit_client_form', price_quote: @price_quote %>
+<% end %>
 
-<%= link_to 'Show', @price_quote %> |
-<%= link_to 'Back', price_quotes_path %>
+<%= link_to 'Cancelar', my_quotes_url %>

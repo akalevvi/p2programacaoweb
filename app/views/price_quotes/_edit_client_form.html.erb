@@ -1,0 +1,17 @@
+<%= form_for(price_quote) do |f| %>
+
+  <p>Fotógrafo: <%= price_quote.photographer.display_name %></p>
+  <p>Criado em: <%= price_quote.created_at %></p>
+  <p>Status: <%= price_quote.status %></p>
+  <p>Total: <%= price_quote.total %></p>
+
+  <div class="field">
+    <%= f.label :Descrição %>
+    <%= f.text_area :description %>
+  </div>
+
+<div class="actions">
+    <%= submit_tag :atualizar%>
+</div>
+
+<% end %>

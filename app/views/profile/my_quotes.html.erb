@@ -30,7 +30,7 @@
             <td><%= quote.status %></td>
             <td><%= quote.created_at %> </td>
             <td><%= link_to 'Apagar', quote, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
-            <td><%= link_to 'Editar', quote %></td>
+            <td><%= link_to 'Editar', edit_price_quote_path(quote) %></td>
 
           </tr>
         </tbody>

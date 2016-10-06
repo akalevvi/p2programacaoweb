@@ -1,0 +1,18 @@
+<%= form_for(price_quote) do |f| %>
+
+
+<p>Criado em: <%= price_quote.created_at %></p>
+<p>Status: <%= price_quote.status %></p>
+
+<p>Cliente: <%= price_quote.client.name %></p>
+<p>Descrição: <%= price_quote.description %></p>
+  <div class="field">
+    <%= f.label :Total %>
+    <%= f.text_field :total %>
+  </div>
+
+<div class="actions">
+    <%= submit_tag :atualizar%>
+</div>
+
+<% end %>

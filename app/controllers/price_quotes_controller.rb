@@ -19,6 +19,7 @@ class PriceQuotesController < ApplicationController
 
   # GET /price_quotes/1/edit
   def edit
+    puts @price_quote
   end
 
   # POST /price_quotes
@@ -26,7 +27,7 @@ class PriceQuotesController < ApplicationController
   def create
     @client = Client.find_by email: current_user.email
 
-    price_quote = PriceQuote.create(description: params[:description], photographer_id: params[:photographer_id], client_id: @client.id, status: :open)
+    price_quote = PriceQuote.create(description: params[:description], photographer_id: params[:photographer_id], client_id: @client.id, status: :aberto)
     if price_quote
       flash[:notice] = 'Orçamento enviado'
       redirect_to :back
@@ -36,14 +37,12 @@ class PriceQuotesController < ApplicationController
   # PATCH/PUT /price_quotes/1
   # PATCH/PUT /price_quotes/1.json
   def update
-    respond_to do |format|
-      if @price_quote.update(price_quote_params)
-        format.html { redirect_to @price_quote, notice: 'Price quote was successfully updated.' }
-        format.json { render :show, status: :ok, location: @price_quote }
-      else
-        format.html { render :edit }
-        format.json { render json: @price_quote.errors, status: :unprocessable_entity }
+    if @price_quote.update(price_quote_params)
+      if current_user.tipo == "Fotógafo"
+        @price_quote.update(status: :aceito)
       end
+      flash[:notice] = 'Atualizado'
+      redirect_to :my_quotes
     end
   end
 
@@ -63,6 +62,6 @@ class PriceQuotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def price_quote_params
-      params.fetch(:price_quote, {})
+      params.require(:price_quote).permit(:total,:description,:status)
     end
 end
