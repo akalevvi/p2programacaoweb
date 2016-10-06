@@ -20,7 +20,7 @@
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="/">PhotoHub</a>
+          <a class="navbar-brand" href=<%= home_path %>>PhotoHub</a>
         </div>
         <% if signed_in? %>
         <ul class="nav navbar-nav">
@@ -36,8 +36,8 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if signed_in? %>
-            <li><%= current_user.email %>
-            - <%= current_user.tipo %></li>
+            <li><a href=<%= home_path %>><%= current_user.email %>
+            - <%= current_user.tipo %></a></li>
             <li><%= link_to "Logout", sign_out_path, method: :delete %></li>
           <% else %>
             <li><a href=<%= sign_up_path %>> <span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
