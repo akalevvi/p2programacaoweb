@@ -11,4 +11,14 @@ class User < ApplicationRecord
     end
   end
 
+  def details
+    if tipo == 'Fotógrafo'
+      return Photographer.find_by email: self[:email]
+    elsif tipo == "Cliente"
+      return Client.find_by email: self[:email]
+    else
+      return nil
+    end
+  end
+
 end
