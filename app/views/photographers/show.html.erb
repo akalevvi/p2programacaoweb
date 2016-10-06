@@ -22,11 +22,11 @@
 <section id="addNewReview">
 
 <h2>Deixe um review: </h2>
-  <%= render 'review_form' %>
+  <%= render 'shared/review_form' %>
 </section>
 
 <section>
-  <% if @photographer.photographer_reviews %>
+  <% if @photographer.photographer_reviews.count > 0 %>
     <p><strong>Reviews:</strong><p>
       <table class="table">
         <thead>

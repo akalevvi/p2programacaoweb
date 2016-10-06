@@ -1,4 +1,4 @@
-<%= form_tag(photographers_review_path, method: "post") do %>
+<%= form_tag('review', method: "post") do %>
 
   <div class="field">
     <%= label_tag :rating %>
@@ -10,7 +10,11 @@
     <%= text_area_tag :comment %>
   </div>
 
-  <%= hidden_field_tag 'photographer_id', @photographer.id %>
+  <% if current_user.tipo == "Cliente" %>
+  	<%= hidden_field_tag 'photographer_id', @photographer.id %>
+  <% else %>
+  	<%= hidden_field_tag 'client_id', @client.id %>
+  <% end %>
 
   <div class="actions">
     <%= submit_tag :enviar%>

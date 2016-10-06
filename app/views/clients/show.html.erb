@@ -1,39 +1,47 @@
-<p id="notice"><%= notice %></p>
+<section>
+  <article>
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @client.name %>
-</p>
+    <img src=<%= "#{@client.avatar}"%> width=150px height=100px > </img>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @client.phone %>
-</p>
+    <h1><%= @client.name %></h1>
 
-<p>
-  <strong>City:</strong>
-  <%= @client.city %>
-</p>
+    <p><strong><%= @client.phone %> - <%= @client.email %> </strong></p>
 
-<p>
-  <strong>State:</strong>
-  <%= @client.state %>
-</p>
+    <p><%= @client.city %>, <%= @client.state %> - <%= @client.country %></p>
+  </article>
+  <aside>
 
-<p>
-  <strong>Country:</strong>
-  <%= @client.country %>
-</p>
+  </aside>
+</section>
 
-<p>
-  <strong>Email:</strong>
-  <%= @client.email %>
-</p>
+<% if current_user.tipo == "Fotógrafo" %>
+  <section id="addNewReview">
+  <h2>Deixe um review: </h2>
+    <%= render 'shared/review_form' %>
+  </section>
+<% end %>
 
-<p>
-  <strong>Avatar:</strong>
-  <%= @client.avatar %>
-</p>
-
-<%= link_to 'Editar', edit_client_path(@client) %> |
-<%= link_to 'Voltar', home_path %>
+<section>
+  <% if @client.client_reviews.count > 0 %>
+    <p><strong>Reviews:</strong><p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nota</th>
+            <th>Comentário</th>
+            <th>Autor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @client.client_reviews.each do |review| %>
+          <tr>
+            <td><%= review.rating %></td>
+            <td><%= review.comment %></td>
+            <td><%= review.client.name %></td>
+          </tr>
+        </tbody>
+          <% end %>
+      </table>
+    <% end %>
+</section>
