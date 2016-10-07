@@ -17,7 +17,7 @@ class PhotographersController < ApplicationController
       filtro += "and bio like '%" + @bio.strip + "%'"
     end
 
-    @photographers = Photographer.where(filtro).order("display_name").paginate(page: params[:paginate], per_page: 4)
+    @photographers = Photographer.where(filtro).order("display_name").paginate(:page => params[:page], per_page: 2)
   end
 
   # GET /photographers/1
